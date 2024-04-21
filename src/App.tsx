@@ -7,8 +7,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Signin />} />
       <Route path='/signup' element={<Signup />} />
-      <Route path='/signup' element={<Dashboard />} />
-      <Route path='/signup' element={<Account />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/account' element={<Account />} />
     </Routes>
   )
 }
