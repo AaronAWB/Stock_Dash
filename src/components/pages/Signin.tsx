@@ -8,7 +8,7 @@ export default function Signin() {
           Sign in to your account.
         </h1>
         <p className='py-1'>
-          Don't have an account yet? <Link to='/' className='underline'>Sign up.</Link>
+          Don't have an account yet? <Link to='/signup' className='underline'>Sign up.</Link>
         </p>
       </div>
       <form>
