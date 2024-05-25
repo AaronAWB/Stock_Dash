@@ -1,5 +1,11 @@
+import { Navbar} from "../navbar";
+import { UserAuth } from '../../context/AuthContext'
+
 export default function Dashboard() {
+
+  const { user } = UserAuth()
+
   return (
-    <h1>Dashboard page.</h1>
+    <Navbar userEmail={user.email}/>
   )
 }
