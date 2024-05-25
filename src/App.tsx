@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Signin, Signup, Dashboard, Account} from './components/pages/index'
-import { AuthContextProvider } from './context/AuthContextProvider'
+import { AuthContextProvider } from './context/AuthContext'
 
 function App() {
   

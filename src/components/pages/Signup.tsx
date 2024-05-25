@@ -1,6 +1,6 @@
 import { SyntheticEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UserAuth } from '../../context/UserAuth'
+import { UserAuth } from '../../context/AuthContext'
 
 function Signup() {
 
@@ -8,7 +8,7 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  const {createUser} = UserAuth();
+  const { createUser } = UserAuth();
 
   const handleSubmit = async (e: SyntheticEvent ) => {
     e.preventDefault()
