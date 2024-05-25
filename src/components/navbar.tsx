@@ -27,16 +27,8 @@ export function Navbar({ userEmail }) {
                 <span className="block text-sm">Aaron Brinckerhoff</span>
                 <span className="block truncate text-sm font-medium">{userEmail}</span>
             </Dropdown.Header>
-            <Dropdown.Item>
-                <a href='/account'>
-                    Account
-                </a>
-            </Dropdown.Item>
-            <Dropdown.Item>
-                <a href='/settings'>
-                    Settings
-                </a>
-            </Dropdown.Item>
+            <Dropdown.Item as="a" href="/account">Account</Dropdown.Item>
+            <Dropdown.Item as="a" href="/settings">Settings</Dropdown.Item>
             <div className="border-t my-1"></div>
             <Dropdown.Item className=' mt-1'>Sign out</Dropdown.Item>
           </Dropdown>
