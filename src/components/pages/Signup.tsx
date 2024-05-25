@@ -1,5 +1,6 @@
 import { SyntheticEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { UserAuth } from '../../context/UserAuth'
 
 function Signup() {
 
@@ -7,17 +8,19 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
+  const {createUser} = UserAuth();
+
   const handleSubmit = async (e: SyntheticEvent ) => {
     e.preventDefault()
     setError('')
     try {
-
+      await createUser(email, password)
     } catch (error: any) {
       setError(error.message)
       console.log(error.message)
     }
   }
-
+ 
   return (
     <div className='max-w-[700px] mx-auto my-16 p-4'>
       <div>
