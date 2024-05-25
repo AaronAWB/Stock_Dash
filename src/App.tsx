@@ -10,12 +10,16 @@ function App() {
       <Routes>
         <Route path='/' element={<Signin />} />
         <Route path='/signup' element={<Signup />} />
-        <ProtectedRoute>
-          <Route path='/dashboard' element={<Dashboard />} />
-        </ProtectedRoute>
-        <ProtectedRoute>
-          <Route path='/account' element={<Account />} />
-        </ProtectedRoute>
+        <Route path='/dashboard' element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path='/account' element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        } />
       </Routes>
     </AuthContextProvider>
       

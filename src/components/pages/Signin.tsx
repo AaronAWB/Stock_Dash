@@ -28,7 +28,7 @@ export default function Signin() {
     setError('')
     try {
       await signIn(email, password)
-      navigate('/account')
+      navigate('/dashboard')
     } catch (error) {
       const errorCode = (error as FireBaseError).code as keyof typeof ERROR_MESSAGES
       const errorMessage = (error as FireBaseError).message
