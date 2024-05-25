@@ -3,13 +3,15 @@ import { Avatar, Dropdown, Navbar as FlowbiteNavbar } from "flowbite-react";
 
 
 export function Navbar({ userEmail }) {
+
   return (
-    <FlowbiteNavbar fluid rounded>
-      <FlowbiteNavbar.Brand href="https://flowbite-react.com">
-        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
-      </FlowbiteNavbar.Brand>
-      <div className="flex md:order-2">
+    <FlowbiteNavbar fluid rounded className='border-b shadow-sm'>
+      <div>
+        <ul>
+            <li>Dashboard</li>
+        </ul>
+      </div>
+      <div className="ml-auto">
         <Dropdown
           arrowIcon={false}
           inline
@@ -21,11 +23,10 @@ export function Navbar({ userEmail }) {
             <span className="block text-sm">Aaron Brinckerhoff</span>
             <span className="block truncate text-sm font-medium">{userEmail}</span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
+          <Dropdown.Item>Account</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <div className="border-t my-1"></div>
+          <Dropdown.Item className=' mt-1'>Sign out</Dropdown.Item>
         </Dropdown>
         <FlowbiteNavbar.Toggle />
       </div>
