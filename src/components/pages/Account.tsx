@@ -1,5 +1,6 @@
 import { UserAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { Navbar} from "../navbar";
 
 
 function Account() {
@@ -18,6 +19,8 @@ function Account() {
     }
 
     return (
+      <>
+        <Navbar userEmail={user.email} />
         <div className='max-w-[80%] mx-auto my-16 p-4'>
           <h1 className='text-2xl font-bold py-4'>Account</h1>
           <p>User Email: {user && user.email}</p>
@@ -25,6 +28,7 @@ function Account() {
             Logout
           </button>
         </div>
+      </>
     );
 };
 
