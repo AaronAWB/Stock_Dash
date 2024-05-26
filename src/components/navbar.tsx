@@ -1,8 +1,24 @@
 
 import { Avatar, Dropdown, Navbar as FlowbiteNavbar } from "flowbite-react";
+import { UserAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 
 export function Navbar({ userEmail }) {
+
+  const { user, logOut } = UserAuth()
+
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      await logOut()
+      navigate('/')
+      console.log('You are logged out.')
+    } catch (error: any) {
+      console.log(error.message)
+    }
+  }
 
   return (
     <FlowbiteNavbar fluid className='border-b'>
@@ -18,10 +34,10 @@ export function Navbar({ userEmail }) {
             <span className="block text-sm">Aaron Brinckerhoff</span>
             <span className="block truncate text-sm font-medium">{userEmail}</span>
           </Dropdown.Header>
-          <Dropdown.Item>Account</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item as="a" href="/account">Account</Dropdown.Item>
+          <Dropdown.Item as="a" href="/settings">Settings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
         </Dropdown>
         <FlowbiteNavbar.Toggle />
       </div>
