@@ -1,11 +1,13 @@
 {
-  "dependencies": {
-    "@types/node": "^20.13.0",
-    "fastify": "^4.27.0",
-    "typescript": "^5.4.5"
-  },
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "start": "node index.js"
+    "dev": "nodemon src src/index.js"
+  },
+  "dependencies": {
+    "fastify": "^4.27.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
   }
 }
