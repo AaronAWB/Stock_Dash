@@ -5,9 +5,11 @@
     "dev": "nodemon src src/index.js"
   },
   "dependencies": {
-    "fastify": "^4.27.0"
+    "fastify": "^4.27.0",
+    "finnhub": "^1.2.18"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "nodemon": "^3.1.2"
   }
 }

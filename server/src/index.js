@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+import 'dotenv/config'
 
 const server = Fastify({
     logger: true
