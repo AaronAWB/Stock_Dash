@@ -7,14 +7,18 @@ const server = Fastify({
 
 const port = 3000 | 3001
 
-server.get('/', (request, reply) => {
+server.get('/', async (request, reply) => {
     reply.send({ hello: 'world'})
 })
 
-server.listen({ port: port }, (err, address) => {
-    if (err) {
-        server.log.error(err)
+const start = async () => {
+    try {
+        await server.listen({port})
+        console.log(`Server is now listening on ${address}`)
+    } catch (err) {
+        server.log.err(err)
         process.exit(1)
     }
-    console.log(`Server is now listening on ${address}`)
-})
+}
+
+start()
