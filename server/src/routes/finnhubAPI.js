@@ -10,15 +10,16 @@ const finnhubAPI = async (fastify, options) => {
         try {
             const { symbol } = request.params;
             const apiKey = process.env.FINNHUB_API_KEY
+            console.log('API KEY:', apiKey)
             const res = await axios.get(baseURL + quote + symbol, {
                 headers: {
-                    'Authorization': `Bearer ${apiKey}`,
+                    'X-Finnhub-Token': `${apiKey}`, 
                     'Content-Type': 'application/json'
                 }
             })
             reply.send(res.data)
         } catch (err) {
-            reply.status(500).send({error: 'Failed to fetch data.'})
+            reply.status(500).send('500 ERROR:', {err})
         }
     })
 }
