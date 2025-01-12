@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+import prisma from './prisma'
 
 const server = Fastify({
     logger: true
