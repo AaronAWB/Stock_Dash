@@ -59,3 +59,11 @@ export const validateSession = async (sessionToken: string) => {
 
     return { user, session }
 }
+
+export const invalidateSession = async (sessionId: string) => {
+    await prisma.session.delete({
+        where: {
+            id: sessionId
+        }
+    });
+}
