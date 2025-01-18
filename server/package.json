@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@oslojs/crypto": "^1.0.1",
+    "@oslojs/encoding": "^1.1.0",
     "@prisma/client": "^6.2.1",
     "fastify": "^5.2.1",
     "fastify-plugin": "^5.0.1",
@@ -13,5 +15,8 @@
   },
   "scripts": {
     "dev": "nodemon"
-  }
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+}
 }

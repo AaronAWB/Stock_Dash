@@ -30,3 +30,32 @@ export const createSession = async (sessionToken: string, userId: string) => {
 
     return session
 }
+
+export const validateSession = async (sessionToken: string) => {
+    const sessionId = sessionTokenToSessionID(sessionToken)
+
+    const result = await prisma.session.findUnique({
+        where: {
+            id: sessionId
+        },
+        include: {
+            user: true
+        }
+    });
+
+    if (!result) {
+        return { session: null, user: null}
+    }
+
+    const { user, ...session } = result;
+
+    if (Date.now() >= session.expiresAt.getTime()) {
+        await prisma.session.delete({
+            where: {
+                id: sessionId
+            }
+        });
+    }
+
+    return { user, session }
+}
