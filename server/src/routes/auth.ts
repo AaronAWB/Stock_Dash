@@ -3,7 +3,8 @@ import { prisma } from '../plugins/prisma'
 import { verifyPasswordHash } from '../ auth/password'
 
 const authRoutes: FastifyPluginAsync = async (fastify) => {
-    fastify.get('/signin', async (request, reply ) => {
+    fastify.post('/signin', async (request, reply ) => {
+        console.log('Request Body:', request.body);
         const { email, password } = request.body as {email: string, password: string}
         const getUserPasswordHash = async (email: string) => {
             const user = await prisma.user.findUnique({
@@ -19,7 +20,7 @@ const authRoutes: FastifyPluginAsync = async (fastify) => {
             reply.send(email)
             reply.status(200).send('User authenticated.')
         } else {
-            reply.status(401).send('Invalid password.')
+            reply.status(401).send('Invalid email or password.')
         }
     })
 }
