@@ -1,5 +1,6 @@
 import { FastifyPluginAsync } from 'fastify'
 import { prisma } from '../plugins/prisma'
+import { hashPassword } from '../ auth/password';
 
 const userRoutes: FastifyPluginAsync = async (fastify) => {
     fastify.get('/users', async (request, reply) => {
@@ -8,9 +9,10 @@ const userRoutes: FastifyPluginAsync = async (fastify) => {
     })
 
     fastify.post('/users', async (request, reply) => {
-        const {name, email, password} = request.body as { name: string, email: string, password: string};
+        const {firstName, lastName, email, password } = request.body as { firstName: string, lastName: string, email: string, password: string};
+        const passwordHash = await hashPassword(password);
         const newUser = await prisma.user.create({
-            data: { name, email, password }
+            data: { firstName, lastName, email, passwordHash }
         })
         reply.send(newUser)
         reply.status(201).send('User created.')
